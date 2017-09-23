@@ -10,6 +10,12 @@ var userData = new Schema({
   name:{
     type:String
   },
+  id:{
+    type:String
+  }
+  idOfPair:{
+    type:String
+  },
   attentionValue:{
     type:Number
   }

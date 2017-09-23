@@ -32,16 +32,22 @@ io.on('connection', (socket) => {
       text:'closed happened'
     });
   });
+  io.on('new data', (doc) => {
+    socket.emit('sending new data', {
+      id:doc.id,
+      dataset:doc.dataset
+    });
+  });
 });
 
 const publicPath = path.join(__dirname, '/public');
 app.use('/', express.static(publicPath));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.set('view engine','hbs');
+// app.set('view engine','html');
 
 app.get('/', (req, res)=>{
-  res.render('index');
+  res.send();
 });
 
 app.post('/api', (req,res) => {
