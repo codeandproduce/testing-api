@@ -16,9 +16,21 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 
-io.on('connection', (socket)=>{
+io.on('connection', (socket) => {
   io.emit('new client', {
       text:socket.id
+  });
+  io.on('eyes open', () => {
+    socket.broadcast.emit('eyes open', {
+      id:socket.id,
+      text:'opened happened'
+    });
+  });
+  io.on('eyes close', () => {
+    socket.broadcast.emit('eyes close', {
+      id:socket.id,
+      text:'closed happened'
+    });
   });
 });
 
