@@ -6,7 +6,8 @@ const socketIO = require('socket.io');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/amuse');
+// mongoose.connect('mongodb://localhost/amuse');
+mongoose.connect(process.env.MONGODB_URL);
 
 var TextInput = require('./models/Test');
 
