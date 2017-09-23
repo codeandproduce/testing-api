@@ -18,17 +18,19 @@ $(document).scroll(function(){
   socket.on('new client', function(doc){
     console.log(doc.text);
   });
+  var current = 100;
   socket.on('eyes open', function(){
     console.log('eyes open!!!');
     $('body').toggleClass('movedown');
+    $('body').css('margin-bottom', current);
+    current+=100;
   });
 </script>
 <body>
 <style>
 .movedown{
   transition: all 250ms ease-in-out;
-  margin-top:100px;
-
+  margin-bottom:100px;
 }
 </style>
 
