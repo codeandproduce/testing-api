@@ -1,0 +1,13 @@
+<script>
+  var socket = io();
+  socket.on('connect', function(){
+    console.log(socket.id);
+  });
+  socket.on('new client', function(doc){
+    console.log(doc.text);
+  });
+  socket.on('eyes open', function(){
+    console.log('eyes open!!!');
+  });
+</script>
+hi!
