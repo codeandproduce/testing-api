@@ -60,6 +60,9 @@ app.post('/api', (req,res) => {
   newInputText.save();
   res.send('worked!');
 });
+
+app.set('view engine','hbs');
+
 server.listen(port, () => {
   console.log("Port is up and running at",port);
 });
