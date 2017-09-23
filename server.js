@@ -6,9 +6,9 @@ const socketIO = require('socket.io');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost:/amuse");
+mongoose.connect('mongodb://localhost/amuse');
 
-var {TextInput} = require('./models/Test.js');
+var TextInput = require('./models/Test');
 
 var port = process.env.PORT || 8000;
 
@@ -30,14 +30,14 @@ app.get('/', (req, res)=>{
   res.render('index');
 });
 
-app.post('/api', (req,res)=>{
+app.post('/api', (req,res) => {
   var inputText = req.inputText;
   var newInputText = new TextInput({
-    inputText
+    text:inputText
   });
   newInputText.save();
-
+  res.send('worked!');
 });
-server.listen(port, ()=>{
+server.listen(port, () => {
   console.log("Port is up and running at",port);
 });

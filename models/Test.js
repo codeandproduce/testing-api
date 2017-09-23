@@ -6,3 +6,5 @@ var testingInput = new Schema({
     type:String
   }
 });
+
+var TextInput = module.exports = mongoose.model('testinginput', testingInput, 'testinginput');
