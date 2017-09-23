@@ -20,19 +20,19 @@ io.on('connection', (socket) => {
   io.emit('new client', {
     text:'new client!'
   });
-  io.on('eyes open', () => {
+  socket.on('eyes open', () => {
     socket.broadcast.emit('eyes open', {
       id:socket.id,
       text:'opened happened'
     });
   });
-  io.on('eyes close', () => {
+  socket.on('eyes close', () => {
     socket.broadcast.emit('eyes close', {
       id:socket.id,
       text:'closed happened'
     });
   });
-  io.on('new data', (doc) => {
+  socket.on('new data', (doc) => {
     socket.emit('sending new data', {
       id:doc.id,
       dataset:doc.dataset
