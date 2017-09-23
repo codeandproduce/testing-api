@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost:/amuse");
 
+var {TextInput} = require('./models/Test.js');
+
 var port = process.env.PORT || 8000;
 
 var app = express();
@@ -29,6 +31,11 @@ app.get('/', (req, res)=>{
 });
 
 app.post('/api', (req,res)=>{
+  var inputText = req.inputText;
+  var newInputText = new TextInput({
+    inputText
+  });
+  newInputText.save();
 
 });
 server.listen(port, ()=>{
