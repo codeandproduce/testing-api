@@ -6,5 +6,12 @@ var testingInput = new Schema({
     type:String
   }
 });
-
+var userData = new Schema({
+  name:{
+    type:String
+  },
+  attentionValue:{
+    type:Number
+  }
+});
 var TextInput = module.exports = mongoose.model('testinginput', testingInput, 'testinginput');

@@ -6,8 +6,7 @@ const socketIO = require('socket.io');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://localhost/amuse');
-mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/amuse');
 
 var TextInput = require('./models/Test');
 
@@ -18,13 +17,15 @@ var server = http.createServer(app);
 var io = socketIO(server);
 
 io.on('connection', (socket)=>{
-  console.log('connected');
+  io.emit('new client', {
+      text:socket.id
+  });
 });
 
 const publicPath = path.join(__dirname, '/public');
 app.use('/', express.static(publicPath));
-app.use(bodyParser.urlencoded({extended:true}));
-
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.set('view engine','hbs');
 
 app.get('/', (req, res)=>{
@@ -32,10 +33,12 @@ app.get('/', (req, res)=>{
 });
 
 app.post('/api', (req,res) => {
-  var inputText = req.inputText;
+  var inputText = req.body.text;
+  console.log(req.body);
   var newInputText = new TextInput({
     text:inputText
   });
+
   newInputText.save();
   res.send('worked!');
 });
