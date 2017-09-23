@@ -20,10 +20,17 @@ $(document).scroll(function(){
   });
   socket.on('eyes open', function(){
     console.log('eyes open!!!');
-    $(document).scrollTop(scrollTopValue+=100);
+    $('body').toggleClass('movedown');
   });
 </script>
 <body>
+<style>
+.movedown{
+  transition: all 250ms ease-in-out;
+  margin-top:100px;
+
+}
+</style>
 
 
 hi!hi!
