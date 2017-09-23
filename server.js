@@ -18,7 +18,7 @@ var io = socketIO(server);
 
 io.on('connection', (socket) => {
   io.emit('new client', {
-      text:socket.id
+    text:'new client!'
   });
   io.on('eyes open', () => {
     socket.broadcast.emit('eyes open', {
