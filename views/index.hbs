@@ -6,7 +6,7 @@ body{
 }
 </style>
 <script>
-var scrollTopValue;
+var scrollTopValue = 0;
 $(document).scroll(function(){
   scrollTopValue = $(this).scrollTop();
   console.log(scrollTopValue);
@@ -20,9 +20,8 @@ $(document).scroll(function(){
   });
   socket.on('eyes open', function(){
     console.log('eyes open!!!');
-    $(document).scrollTop() = scrollTopValue+=100;
+    $(document).scrollTop(scrollTopValue+=100);
   });
-
 </script>
 <body>
 
