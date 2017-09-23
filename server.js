@@ -47,7 +47,7 @@ app.use(bodyParser.json());
 // app.set('view engine','html');
 
 app.get('/', (req, res)=>{
-  res.send();
+  res.render('index');
 });
 
 app.post('/api', (req,res) => {
