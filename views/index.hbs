@@ -24,19 +24,19 @@ body{
   var isItValidating = false;
   var blinkCounter
 
-  socket.on('eyes open', function(doc){
-    if(!isItValidating){
-      $('body').scrollTop(scrollTopValue+=60);
-      scrollTopValue+=60;
-    }else{
-      blinkCounter++;
-      if(blinkdCounter == 3){
-        socket.emit('this is a pair', {
-          museSocketID:doc.id,
-          userSocketID:thisID
-        });
-      }
-    }
+  // socket.on('eyes open', function(doc){
+  //   if(!isItValidating){
+  //     $('body').scrollTop(scrollTopValue+=60);
+  //     scrollTopValue+=60;
+  //   }else{
+  //     blinkCounter++;
+  //     if(blinkdCounter == 3){
+  //       socket.emit('this is a pair', {
+  //         museSocketID:doc.id,
+  //         userSocketID:thisID
+  //       });
+  //     }
+  //   }
 
   });
   setTimeout(function(){
@@ -52,6 +52,9 @@ body{
     }
     console.log(arrayValues);
     console.log(arrayValues.length);
+  });
+  socket.on('eyes open', function(doc){
+    console.log('eyes open');
   });
 </script>
 <body>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <title>Test</title>
+    <style>
+      body{
+        background-color:#6ED2E6;
+        height:100%;
+        width:100%;
+      }
+      .contain-dots{
+        bottom:20px;
+        width:500px;
+        height:200px;
+        display: block;
+        margin:auto;
+      }
+      .ul-dots{
+        list-style:none;
+        display:inline-block;
+        width:100%;
+        padding:0;
+      }
+      .contain-inside-dots{
+        display:inline-block;
+        width:30%;
+        height:100%;
+      }
+      .a-dot{
+        display:block;
+        margin:auto;
+        width:40px;
+        height:40px;
+        background:none;
+        border-radius:100px;
+        border:2px solid black;
+      }
+      .a-dot > span{
+        width:40px;
+        height:40px;
+        background-color:black;
+        transition: all 500ms ease-in-out;
+        border-radius:100px;
+        display:block;
+        transform: scale(0);
+        margin:auto;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+
+    function displayBlinkDot(element){
+      element.css('transform', 'scale(1.0)');
+    }
+    setTimeout(function(){
+      displayBlinkDot($('#firstBlinkFlash'));
+      setTimeout(function(){
+        displayBlinkDot($('#secondBlinkFlash'));
+        setTimeout(function(){
+          displayBlinkDot($('#thirdBlinkFlash'));
+        },800);
+      },800);
+    },800);
+    </script>
+    <div class="contain-dots">
+      <div class="contain-dots-them">
+        <ul class="ul-dots">
+          <div class="contain-inside-dots">
+            <li class="a-dot">
+                <span id="firstBlinkFlash"></span>
+            </li>
+          </div>
+          <div class="contain-inside-dots">
+            <li class="a-dot">
+                <span id="secondBlinkFlash"></span>
+            </li>
+          </div>
+          <div class="contain-inside-dots">
+            <li class="a-dot">
+                <span id="thirdBlinkFlash"></span>
+            </li>
+          </div>
+
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
