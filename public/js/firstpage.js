@@ -33,6 +33,7 @@ var bruh = false;
       console.log('my eyes have been closed');
       bruh = true;
     }else if(doc.text < 950 && bruh){
+      console.log('suposed to be one open');
       blinkCounter++;
       if(blinkCounter == 1){
         displayBlinkDot($('#firstBlinkFlash'));
