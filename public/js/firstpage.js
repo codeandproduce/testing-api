@@ -26,6 +26,8 @@ $('.start').click(function(){
   var didItBlink = [];
   socket.on('challen', function(doc){
     if(doc.text < 900 && bruh == true && doc.text>600){
+      console.log("open");
+      console.log(doc.text);
         blinkCounter++;
         if(blinkCounter == 1){
           displayBlinkDot($('#firstBlinkFlash'));
@@ -41,6 +43,8 @@ $('.start').click(function(){
           didItBlink[1] = 1;
         }
     }else if(doc.text>1000 && bruh == false){
+      console.log("close");
+      console.log(doc.text);
       bruh = true;
       didItBlink[0] = 1;
     }
