@@ -28,6 +28,7 @@ $(document).on('click','#getStarted', function(){
   var bruh = true;
   var didItBlink = [];
   socket.on('challen', function(doc){
+    console.log(doc.text);
     if(doc.text < 850 && bruh == true && doc.text>600){
       console.log('bruh');
       if(isItValidating == true){
