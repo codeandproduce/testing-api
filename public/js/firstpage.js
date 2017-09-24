@@ -28,7 +28,19 @@ $('.start').click(function(){
     if(doc.text < 900 && bruh == true && doc.text>600){
       console.log('eyes are open');
       console.log(doc.text);
-
+      blinkCounter++;
+      if(blinkCounter == 1){
+        displayBlinkDot($('#firstBlinkFlash'));
+      }else if(blinkCounter == 2){
+        displayBlinkDot($('#secondBlinkFlash'));
+      }
+      else if(blinkCounter == 3){
+        displayBlinkDot($('#thirdBlinkFlash'));
+        socket.emit('this is a pair', {
+          museSocketID:doc.id,
+          userSocketID:thisID
+        });
+      }      bruh = false;
       bruh = false;
     }else if(doc.text>1000 && bruh == false){
       console.log('eyesare closed');
@@ -49,22 +61,22 @@ $('.start').click(function(){
   });
   //
   //
-  // if(doc.text > 950 && doc.text<1050 && !bruh){
-  //   console.log('my eyes have been closed');
-  //   bruh = true;
-  // }else if(doc.text < 950 && bruh){
-  //   console.log('suposed to be one open');
-  //   blinkCounter++;
-  //   if(blinkCounter == 1){
-  //     displayBlinkDot($('#firstBlinkFlash'));
-  //   }else if(blinkCounter == 2){
-  //     displayBlinkDot($('#secondBlinkFlash'));
-  //   }
-  //   else if(blinkCounter == 3){
-  //     displayBlinkDot($('#thirdBlinkFlash'));
-  //     socket.emit('this is a pair', {
-  //       museSocketID:doc.id,
-  //       userSocketID:thisID
-  //     });
-  //   }      bruh = false;
-  // }
+  if(doc.text > 950 && doc.text<1050 && !bruh){
+    console.log('my eyes have been closed');
+    bruh = true;
+  }else if(doc.text < 950 && bruh){
+    console.log('suposed to be one open');
+    blinkCounter++;
+    if(blinkCounter == 1){
+      displayBlinkDot($('#firstBlinkFlash'));
+    }else if(blinkCounter == 2){
+      displayBlinkDot($('#secondBlinkFlash'));
+    }
+    else if(blinkCounter == 3){
+      displayBlinkDot($('#thirdBlinkFlash'));
+      socket.emit('this is a pair', {
+        museSocketID:doc.id,
+        userSocketID:thisID
+      });
+    }      bruh = false;
+  }
