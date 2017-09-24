@@ -17,8 +17,12 @@ var server = http.createServer(app);
 var io = socketIO(server);
 
 io.on('connection', (socket) => {
-  io.emit('new client', {
-    text:'new client!'
+  var thisID = socket.id;
+  var newClient = new TextInput({
+    socketID:thisID
+  });
+  socket.emit('yourID', {
+    yourID:thisID
   });
   socket.on('eyes open', () => {
     socket.broadcast.emit('eyes open', {
@@ -42,7 +46,14 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('challen',{
       text:doc
     });
-  })
+  });
+  socket.on('this is a pair', (doc) => {
+    var newUser = new TextInput({
+      id:doc.userSocketID,
+      idOfPair:doc.museSocketID
+    });
+    newUser.save();
+  });
 });
 
 const publicPath = path.join(__dirname, '/public');

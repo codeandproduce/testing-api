@@ -7,9 +7,6 @@ var testingInput = new Schema({
   }
 });
 var userData = new Schema({
-  name:{
-    type:String
-  },
   id:{
     type:String
   },

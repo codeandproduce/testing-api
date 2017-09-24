@@ -6,24 +6,38 @@ body{
 }
 </style>
 <script>
-var arrayValues = [];
-var scrollTopValue = 0;
-$(document).scroll(function(){
-  scrollTopValue = $(this).scrollTop();
-  console.log(scrollTopValue);
-});
   var socket = io();
-  socket.on('connect', function(){
-    console.log('conneced');
+  var arrayValues = [];
+  var scrollTopValue = 0;
+  var thisID = '';
+  $(document).scroll(function(){
+    scrollTopValue = $(this).scrollTop();
+    console.log(scrollTopValue);
+  });
+  socket.on('yourID', function(doc){
+    thisID = doc.thisID
   });
   socket.on('new client', function(doc){
     console.log(doc.text);
   });
   var current = 100;
-  socket.on('eyes open', function(){
-    console.log('eyes open!!!');
-    $('body').scrollTop(scrollTopValue+=100);
-    scrollTopValue+=100;
+  var isItValidating = false;
+  var blinkCounter
+
+  socket.on('eyes open', function(doc){
+    if(!isItValidating){
+      $('body').scrollTop(scrollTopValue+=60);
+      scrollTopValue+=60;
+    }else{
+      blinkCounter++;
+      if(blinkdCounter == 3){
+        socket.emit('this is a pair', {
+          museSocketID:doc.id,
+          userSocketID:thisID
+        });
+      }
+    }
+
   });
   setTimeout(function(){
     $('body').scrollTop(scrollTopValue+=100);
@@ -43,18 +57,19 @@ $(document).scroll(function(){
 </script>
 <body>
 <style>
-body{
-  position:absolute;
-}
-.movedown{
-  top:0;
-  transition: all 250ms ease-in-out;
-  margin-bottom:100px;
-}
-body{
-  transition:all 250ms ease-in-out;
-}
+  body{
+    position:absolute;
+    transition:all 250ms ease-in-out;
+  }
+  .movedown{
+    top:0;
+    transition: all 250ms ease-in-out;
+    margin-bottom:100px;
+  }
 </style>
+<script>
+
+</script>
 
 
 hi!hi!
