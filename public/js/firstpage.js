@@ -35,7 +35,7 @@ $('.start').click(function(){
         console.log('closed');
         eyesOpen = false;
         if(!isItValidating){
-          $('body').scrollTop(scrollTopValue+=60);
+          // $('body').scrollTop(scrollTopValue+=60);
           scrollTopValue+=60;
         }else{
           blinkCounter++;
