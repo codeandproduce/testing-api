@@ -42,6 +42,7 @@ $('.start').click(function(){
           });
           didItBlink[1] = 1;
         }
+        bruh = false;
     }else if(doc.text>1000 && bruh == false){
       console.log("close");
       console.log(doc.text);
