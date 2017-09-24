@@ -2,6 +2,7 @@
 <html lang="en">
   	<head>
 	    <meta charset="UTF-8">
+
   		<meta name="description" content="AmuseBrains">
   		<meta name="keywords" content="Muse, Arduino, MuseLab">
   		<meta name="author" content="Team AmuseBrains">
@@ -21,6 +22,7 @@
   		<!-- Compiled and minified JavaScript -->
 	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="/socket.io/socket.io.js"></script>
@@ -107,10 +109,18 @@
         				</div>
 	    			</div>
 
-	    			<p>Here we go you have checked all our hardware requirements that you need to connect with the service</p>
+	    			<!-- <p>Here we go you have checked all our hardware requirements that you need to connect with the service</p> -->
 	    		</div>
 	    	</div>
 	    	<div id="third-page" class="section">
+        <style>
+          canvas{
+            width:500px !important;
+            height:auto;
+            z-index:100;
+          }
+        </style>
+          <canvas id="myChart"></canvas>
 
 	    		<div class="row">
 

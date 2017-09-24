@@ -60,6 +60,10 @@ body{
   font-size:30px;
   margin-left:70px;
 }
-.card{
+.csenter{
   transform:scale(0.65);
+  position: absolute;
+  top: 185px;
+}
+.csenter{
 }

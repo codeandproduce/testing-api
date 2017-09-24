@@ -30,7 +30,7 @@ $('.start').click(function(){
     eyesOpen = false;
   });
   socket.on('challen', function(doc){
-    if(doc.text > 1000){
+    if(doc.text > 950 && doc.text<1050){
       if(eyesOpen){
         console.log('closed');
         eyesOpen = false;

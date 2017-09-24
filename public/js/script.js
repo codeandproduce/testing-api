@@ -77,3 +77,24 @@ $(document).ready(function() {
 $('.start').click(function(){
 	$.fn.fullpage.moveSectionDown();
 });
+
+
+$(document).ready(function(){
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        datasets: [{
+            label: "My First dataset",
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45,1234,2134,1234,1234,124,1234,1234,1324,123,4123,412,43123,4,4123124,413,41],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+});

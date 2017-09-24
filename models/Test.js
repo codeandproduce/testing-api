@@ -15,6 +15,9 @@ var userData = new Schema({
   },
   attentionValue:{
     type:Number
+  },
+  threshold:{
+    type:Number
   }
 });
 var TextInput = module.exports = mongoose.model('testinginput', testingInput, 'testinginput');
