@@ -28,6 +28,9 @@ $('.start').click(function(){
     if(doc.text < 900 && bruh == true && doc.text>600){
       console.log("open");
       console.log(doc.text);
+      if(isItValidating){
+
+
         blinkCounter++;
         if(blinkCounter == 1){
           displayBlinkDot($('#firstBlinkFlash'));
@@ -43,6 +46,7 @@ $('.start').click(function(){
           didItBlink[1] = 1;
         }
         bruh = false;
+      }
     }else if(doc.text>1000 && bruh == false){
       console.log("close");
       console.log(doc.text);
