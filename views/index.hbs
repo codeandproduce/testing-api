@@ -36,6 +36,18 @@
 
 	</head>
   	<body>
+      <script>
+      $(document).ready(function(){
+        $.fn.fullpage.moveSectionDown();
+        $.fn.fullpage.setAllowScrolling(true);
+
+        // setTimeout(function(){
+        //   $('body').scrollTop(1000);
+        // },2000);
+
+      });
+
+</script>
 	    <div id="fullpage">
 	    	<div id="first-page" class="section">
 		        <div class="contain-content">
@@ -45,7 +57,7 @@
                 AmuseBrains is an interface that utlizes Muse. </br>
                 Confirm your connection by blinking three times.
               </p>
-              <button class="start">Get Started</button>
+              <button id="getStarted" class="start">Get Started</button>
 
 		          <!-- login icons -->
 

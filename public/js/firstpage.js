@@ -1,9 +1,13 @@
+var isItValidating = false;
+
 function displayBlinkDot(element){
   element.css('transform', 'scale(1.0)');
 }
-$('.start').click(function(){
+$(document).on('click','#getStarted', function(){
   isItValidating = true;
+  console.log("validated");
 });
+
   var socket = io();
   var arrayValues = [];
   var scrollTopValue = 0;
@@ -17,7 +21,6 @@ $('.start').click(function(){
   socket.on('new client', function(doc){
   });
   var current = 100;
-  var isItValidating = false;
   var blinkCounter = 0;
   var eyesOpen = true;
 
@@ -29,6 +32,7 @@ $('.start').click(function(){
     if(doc.text < 850 && bruh == true && doc.text>600){
       console.log("open");
       console.log(doc.text);
+      if(isItValidating == true){
         blinkCounter++;
         if(blinkCounter == 1){
           displayBlinkDot($('#firstBlinkFlash'));
@@ -42,12 +46,19 @@ $('.start').click(function(){
             userSocketID:thisID
           });
           didItBlink[1] = 1;
-          $.fn.fullpage.moveSectionDown();
-          $.fn.fullpage.setAllowScrolling(true);
+          setTimeout(function(){
+            $.fn.fullpage.moveSectionDown();
+            $.fn.fullpage.setAllowScrolling(true);
+          },1000);
         }
-
-
-      bruh = false;
+        bruh = false;
+      }else{
+        if(didItBlink[0]==1 && didItBlink[1]==1){
+          $(window).scrollTop($(window).scrollTop()+30);
+          didItBlink = [];
+          console.log('blink');
+        }
+      }
 
     }else if(doc.text>900 && bruh == false){
       console.log("close");
@@ -63,10 +74,7 @@ $('.start').click(function(){
       arrayValues.shift();
     }
 
-    if(didItBlink[0]==1 && didItBlink[1]==1){
-      $(window).scrollTop($(window).scrollTop()+30);
-      didItBlink = [];
-    }
+
 
 
 
