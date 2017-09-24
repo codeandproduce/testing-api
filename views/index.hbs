@@ -48,8 +48,7 @@ body{
       arrayValues.push(doc.text);
     }else{
       arrayValues.push(doc.text);
-      const index = arrayValues.length;
-      arrayValues.splice(index, 1);
+      arrayValues.shift();
     }
     console.log(arrayValues);
     console.log(arrayValues.length);
