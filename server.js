@@ -39,7 +39,7 @@ io.on('connection', (socket) => {
     });
   });
   socket.on('channel 1 data', () => {
-    socket.emit('challen',{
+    socket.broadcast.emit('challen',{
       text:'text!!'
     });
   })
