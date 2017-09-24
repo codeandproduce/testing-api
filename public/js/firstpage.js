@@ -29,10 +29,10 @@ $('.start').click(function(){
 
 var bruh = true;
   socket.on('challen', function(doc){
-   if(doc.text < 950 && !bruh){
+    if(doc.text < 950 && !bruh){
       console.log('eyes are open');
       bruh = true;
-    }else if(doc.text>950, bruh){
+    }else if(doc.text>950 && bruh){
       console.log('eyesare closed');
       bruh = false;
     }
