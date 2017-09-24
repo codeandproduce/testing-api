@@ -38,6 +38,11 @@ io.on('connection', (socket) => {
       dataset:doc.dataset
     });
   });
+  socket.on('channel 1 data', () => {
+    socket.emit('challen',{
+      text:'text!!'
+    });
+  })
 });
 
 const publicPath = path.join(__dirname, '/public');

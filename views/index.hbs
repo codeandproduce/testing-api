@@ -21,16 +21,29 @@ $(document).scroll(function(){
   var current = 100;
   socket.on('eyes open', function(){
     console.log('eyes open!!!');
-    $('body').toggleClass('movedown');
-    $('body').css('margin-bottom', current);
-    current+=100;
+    $('body').scrollTop(scrollTopValue+=100);
+    scrollTopValue+=100;
+  });
+  setTimeout(function(){
+    $('body').scrollTop(scrollTopValue+=100);
+  },2000);
+
+  socket.on('challen', function(){
+    console.log("text!!!!");
   });
 </script>
 <body>
 <style>
+body{
+  position:absolute;
+}
 .movedown{
+  top:0;
   transition: all 250ms ease-in-out;
   margin-bottom:100px;
+}
+body{
+  transition:all 250ms ease-in-out;
 }
 </style>
 
