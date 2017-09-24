@@ -21,14 +21,11 @@ $('.start').click(function(){
   var blinkCounter = 0;
   var eyesOpen = true;
 
-  socket.on('eyes open', function(doc){
-    console.log('eyes open');
 
+  var bruh = true;
 
-  });
-
-var bruh = true;
   socket.on('challen', function(doc){
+    console.log(doc.text);
     if(doc.text < 1000 && bruh == true && doc.text>600){
       console.log('eyes are open');
       bruh = false;
