@@ -34,9 +34,9 @@ $('.start').click(function(){
       if(eyesOpen){
         console.log('closed');
         eyesOpen = false;
-        if(!isItValidating){
+        if(isItValidating){
           // $('body').scrollTop(scrollTopValue+=60);
-          scrollTopValue+=60;
+          // scrollTopValue+=60;
         }else{
           blinkCounter++;
           if(blinkCounter == 1){
