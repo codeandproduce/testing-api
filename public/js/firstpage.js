@@ -71,6 +71,12 @@ $('.start').click(function(){
 
 
   });
+
+  var anxietyValue = 0;
+  socket.on('anxiety to website', function(doc){
+    anxietyValue = (doc.value)*100;
+  });
+
   //
   //
   // if(doc.text > 950 && doc.text<1050 && !bruh){

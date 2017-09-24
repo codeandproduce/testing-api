@@ -22,7 +22,7 @@
   		<!-- Compiled and minified JavaScript -->
 	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+      <script src="chart.js"></script>
 
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="/socket.io/socket.io.js"></script>
@@ -147,18 +147,92 @@
 
   	    		</div>
   	    		<div class="row">
-  	    			<div class="desc_arduino col s6">
+  	    			<!-- <div class="desc_arduino col s6">
                 <img src="assets/images/arduino_uno.jpg" style="width: 70%; height: auto;">
                 <p>Arduino UNO</p>
                 <p>The UNO is the best board to get started with electronics and coding. If this is your first experience tinkering with the platform, the UNO is the most robust board you can start playing with. The UNO is the most used and documented board of the whole Arduino family.</p>
                 <a href="https://store.arduino.cc/usa/arduino-uno-rev3">More info</a>
-  	    			</div>
+  	    			</div> -->
   	    			<div class="desc_muse-headgear col s6">
-                <img src="assets/images/muse-headgear.png" style="width: 70%; height: auto;">
-                <p>Muse Headgear</p>
-                <p>Muse: the brain sensing headband, is an electroencephalography (EEG) technology. EEG is a cell-established, non-invasive, harmless method of recording the electrical activity of groups of brain  cells. EEG provides robust real-time insight into the brain; and Muse is the most versatile and easy-to-use EEG system available.</p>
-                <a href="">More info</a>
-  	    			</div>
+                <img src="assets/images/muse-headgear.png">
+
+                <h2 class="muse-headgear-heading">Muse Headgear</h2>
+
+                <p>Muse is an electroencephalography (EEG) technology. An EEG is a cell-established, non-invasive, harmless method of recording the electrical activity of groups of brain  cells.</p>
+                <style>
+                  .muse-headgear-heading{
+                    color:white;
+                    font-size:20px;
+                    margin-top: 10px;
+                    width:100%;
+                    text-align: center;
+                  }
+                  .desc_muse-headgear > p{
+                    width:100%;
+                    text-align: center;
+                  }
+                  .desc_muse-headgear >img{
+                    width:300px !important;
+                  }
+                </style>
+              </div>
+              <div id="contain-graph" class="desc_muse-headgear col s6">
+                <p class="anxiety-label">Your anxiety level:</p>
+                <style>
+                  p.anxiety-label{
+                    margin-bottom:20px;
+                    font-size:20px;
+                    color:white;
+                    width:100%;
+                  }
+                  #myChart{
+                    display:block;
+                    margin:auto;
+                  }
+                </style>
+                <canvas id="myChart" height="200" width="200"></canvas>
+                <p>
+                  anxietyValue
+                </p>
+                <script>
+
+                      var pieData = [
+                        {
+                          value: anxietyValue*100,
+                          color:"#EF9898"
+                        },
+                        {
+                          value : 100-(anxietyValue*100),
+                          color : "#BDDEFB"
+                        }
+                      ];
+
+                    var myPie = new Chart(document.getElementById("myChart").getContext("2d")).Doughnut(pieData,{percentageInnerCutout : 80});
+                    setInterval(function(){
+                      anxietyValue+=1;
+                      pieData = [
+                        {
+                          value: anxietyValue*100,
+                          color:"#EF9898"
+                        },
+                        {
+                          value : 100-(anxietyValue*100),
+                          color : "#BDDEFB"
+                        }
+                      ];
+                      var pieOptions = {
+                            animation : false,  // Edit: correction typo: from 'animated' to 'animation'
+                            percentageInnerCutout: 80
+                      }
+                      console.log(pieData);
+
+                      $('#myChart').remove();
+                      $('#contain-graph').append(`<canvas id="myChart" height="200" width="200"></canvas>`);
+                      var myPie = new Chart(document.getElementById("myChart").getContext("2d")).Doughnut(pieData,pieOptions);
+
+                  },500);
+                </script>
+              </div>
   	    		</div>
 
 	    		<div class="row">

@@ -54,6 +54,11 @@ io.on('connection', (socket) => {
     });
     newUser.save();
   });
+  socket.on('anxiety val', (doc) => {
+    socket.emit('anxiety to website',{
+      value:doc
+    });
+  });
 });
 
 const publicPath = path.join(__dirname, '/public');
