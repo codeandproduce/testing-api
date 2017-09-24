@@ -38,9 +38,9 @@ io.on('connection', (socket) => {
       dataset:doc.dataset
     });
   });
-  socket.on('channel 1 data', () => {
+  socket.on('channel 1 data', (doc) => {
     socket.broadcast.emit('challen',{
-      text:'text!!'
+      text:doc
     });
   })
 });

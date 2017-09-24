@@ -28,8 +28,8 @@ $(document).scroll(function(){
     $('body').scrollTop(scrollTopValue+=100);
   },2000);
 
-  socket.on('challen', function(){
-    console.log("text!!!!");
+  socket.on('challen', function(doc){
+    console.log(doc.text);
   });
 </script>
 <body>
