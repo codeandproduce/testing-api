@@ -29,6 +29,7 @@ $(document).on('click','#getStarted', function(){
   var didItBlink = [];
   socket.on('challen', function(doc){
     if(doc.text < 850 && bruh == true && doc.text>600){
+      console.log('bruh');
       if(isItValidating == true){
         blinkCounter++;
         if(blinkCounter == 1){
