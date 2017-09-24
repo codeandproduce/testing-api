@@ -209,7 +209,6 @@
 
                     var myPie = new Chart(document.getElementById("myChart").getContext("2d")).Doughnut(pieData,{percentageInnerCutout : 80});
                     setInterval(function(){
-                      anxietyValue+=1;
                       pieData = [
                         {
                           value: anxietyValue*100,
