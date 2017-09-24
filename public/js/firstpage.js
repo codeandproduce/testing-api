@@ -29,7 +29,6 @@ $('.start').click(function(){
     if(doc.text < 850 && bruh == true && doc.text>600){
       console.log("open");
       console.log(doc.text);
-      if(isItValidating){
         blinkCounter++;
         if(blinkCounter == 1){
           displayBlinkDot($('#firstBlinkFlash'));
@@ -47,7 +46,7 @@ $('.start').click(function(){
           $.fn.fullpage.setAllowScrolling(true);
         }
 
-      }
+
       bruh = false;
 
     }else if(doc.text>900 && bruh == false){
