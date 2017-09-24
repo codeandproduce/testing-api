@@ -10,13 +10,11 @@ $('.start').click(function(){
   var thisID = '';
   $(document).scroll(function(){
     scrollTopValue = $(this).scrollTop();
-    console.log(scrollTopValue);
   });
   socket.on('yourID', function(doc){
     thisID = doc.thisID
   });
   socket.on('new client', function(doc){
-    console.log(doc.text);
   });
   var current = 100;
   var isItValidating = false;
@@ -24,7 +22,28 @@ $('.start').click(function(){
   var eyesOpen = true;
 
   socket.on('eyes open', function(doc){
+    console.log('eyes open');
+
+
+  });
+  socket.on('eyes close', function(doc){
+    eyesOpen = false;
+  });
+  socket.on('challen', function(doc){
+    if(doc.text > 1000){
+      eyesOpen = false;
+    }else{
+      eyesOpen = true;
+    }
+    if(arrayValues.length < 150){
+      arrayValues.push(doc.text);
+    }else{
+      arrayValues.push(doc.text);
+      arrayValues.shift();
+    }
+
     if(!eyesOpen){
+      console.log('!eyesopen');
       eyesOpen = true;
       if(!isItValidating){
         $('body').scrollTop(scrollTopValue+=60);
@@ -45,20 +64,5 @@ $('.start').click(function(){
         }
       }
     }
-  });
-  socket.on('eyes close', function(doc){
-    eyesOpen = false;
-  });
-  socket.on('challen', function(doc){
-    if(arrayValues.length < 150){
-      arrayValues.push(doc.text);
-    }else{
-      arrayValues.push(doc.text);
-      arrayValues.shift();
-    }
-    console.log(arrayValues);
-    console.log(arrayValues.length);
-  });
-  socket.on('eyes open', function(doc){
-    console.log('eyes open');
+
   });
