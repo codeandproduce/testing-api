@@ -23,30 +23,26 @@ $('.start').click(function(){
 
 
   var bruh = true;
-
+  var didItBlink = [];
   socket.on('challen', function(doc){
     if(doc.text < 900 && bruh == true && doc.text>600){
-      console.log('eyes are open');
-      console.log(doc.text);
-      blinkCounter++;
-      if(blinkCounter == 1){
-        displayBlinkDot($('#firstBlinkFlash'));
-      }else if(blinkCounter == 2){
-        displayBlinkDot($('#secondBlinkFlash'));
-      }
-      else if(blinkCounter == 3){
-        displayBlinkDot($('#thirdBlinkFlash'));
-        socket.emit('this is a pair', {
-          museSocketID:doc.id,
-          userSocketID:thisID
-        });
-      }      bruh = false;
-      bruh = false;
+        blinkCounter++;
+        if(blinkCounter == 1){
+          displayBlinkDot($('#firstBlinkFlash'));
+        }else if(blinkCounter == 2){
+          displayBlinkDot($('#secondBlinkFlash'));
+        }
+        else if(blinkCounter == 3){
+          displayBlinkDot($('#thirdBlinkFlash'));
+          socket.emit('this is a pair', {
+            museSocketID:doc.id,
+            userSocketID:thisID
+          });
+          didItBlink[1] = 1;
+        }
     }else if(doc.text>1000 && bruh == false){
-      console.log('eyesare closed');
-      console.log(doc.text);
-
       bruh = true;
+      didItBlink[0] = 1;
     }
 
     if(arrayValues.length < 150){
@@ -54,6 +50,11 @@ $('.start').click(function(){
     }else{
       arrayValues.push(doc.text);
       arrayValues.shift();
+    }
+
+    if(didItBlink[0]==1 && didItBlink[1]==1){
+      $(window).scrollTop($(window).scrollTop()+30);
+      didItBlink = [];
     }
 
 

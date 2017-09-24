@@ -26,15 +26,15 @@ body{
   color:white;
   font-family: 'Raleway';
   margin-top:60px;
-  margin-bottom:60px;
+  margin-bottom:40px;
 }
 .start{
   padding:15px 20px;
-  font-size:25px;
+  font-size:20px;
   margin:auto;
   display:block;
   background-color:#6ED2E6;
-  border:3px solid white;
+  border:2px solid white;
   border-radius:5px;
   color:white;
   margin-bottom:40px;
@@ -48,6 +48,7 @@ body{
   text-align: center;
   width:100vw;
   margin-bottom:50px;
+  font-size:23px;
   color:white;
 }
 br{
