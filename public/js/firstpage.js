@@ -25,6 +25,7 @@ $('.start').click(function(){
   var bruh = true;
   var didItBlink = [];
   socket.on('challen', function(doc){
+    console.log(doc.text);
     if(doc.text < 850 && bruh == true && doc.text>600){
       console.log("open");
       console.log(doc.text);
@@ -79,7 +80,6 @@ $('.start').click(function(){
 
   socket.on('anxiety to website', function(doc){
     anxietyValue = doc.value;
-    console.log(anxietyValue);
   });
   socket.on('short term memory to website', function(doc){
     shortTermMemoryValue = doc.value;
