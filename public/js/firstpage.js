@@ -25,7 +25,7 @@ $('.start').click(function(){
   var bruh = true;
   var didItBlink = [];
   socket.on('challen', function(doc){
-    if(doc.text < 900 && bruh == true && doc.text>600){
+    if(doc.text < 875 && bruh == true && doc.text>600){
       console.log("open");
       console.log(doc.text);
       if(isItValidating){
@@ -49,7 +49,7 @@ $('.start').click(function(){
       }
       bruh = false;
 
-    }else if(doc.text>1000 && bruh == false){
+    }else if(doc.text>950 && bruh == false){
       console.log("close");
       console.log(doc.text);
       bruh = true;
