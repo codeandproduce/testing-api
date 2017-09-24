@@ -75,6 +75,7 @@ $('.start').click(function(){
   var anxietyValue = 0;
   socket.on('anxiety to website', function(doc){
     anxietyValue = doc.value;
+    console.log(anxietyValue);
   });
 
   //
