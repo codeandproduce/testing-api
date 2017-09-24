@@ -29,12 +29,12 @@ $('.start').click(function(){
 
 var bruh = true;
   socket.on('challen', function(doc){
-    if(doc.text < 950 && !bruh){
+    if(doc.text < 950 && bruh == true){
       console.log('eyes are open');
-      bruh = true;
-    }else if(doc.text>950 && bruh){
-      console.log('eyesare closed');
       bruh = false;
+    }else if(doc.text>950 && bruh == false){
+      console.log('eyesare closed');
+      bruh = true;
     }
 
     if(arrayValues.length < 150){
