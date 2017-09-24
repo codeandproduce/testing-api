@@ -29,8 +29,6 @@ $('.start').click(function(){
       console.log("open");
       console.log(doc.text);
       if(isItValidating){
-
-
         blinkCounter++;
         if(blinkCounter == 1){
           displayBlinkDot($('#firstBlinkFlash'));
@@ -44,6 +42,8 @@ $('.start').click(function(){
             userSocketID:thisID
           });
           didItBlink[1] = 1;
+          $.fn.fullpage.moveSectionDown();
+          $.fn.fullpage.setAllowScrolling(true);
         }
 
       }

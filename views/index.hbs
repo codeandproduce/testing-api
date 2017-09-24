@@ -26,6 +26,7 @@
 
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="/socket.io/socket.io.js"></script>
+      <script src="/js/smoothie.js"></script>
 
 	    <script src="js/jquery.fullpage.min.js"></script>
 	    <script type="text/javascript" src="js/script.js"></script>
@@ -68,6 +69,13 @@
                   </ul>
                 </div>
               </div>
+              <script>
+                $('.start').click(function(){
+                  $('.contain-dots').css('visibility','visible');
+                  $('.contain-dots').css('opacity','1');
+                  $('.contain-dots').css('bottom','20px');
+                });
+              </script>
 		        </div>
 	      	</div>
 	    	<div id="second-page" class="section">
@@ -114,14 +122,44 @@
 	    		</div>
 	    	</div>
 	    	<div id="third-page" class="section">
-        <style>
-          canvas{
-            width:500px !important;
-            height:auto;
-            z-index:100;
-          }
-        </style>
-          <canvas id="myChart"></canvas>
+          <link rel="stylesheet" href="/css/wildcard.css" />
+          <h1 class="third-heading">Your Fp1 EEG Brain Data.</h1>
+          <canvas id="mycanvas" width="600" height="150"></canvas>
+          <script>
+            var smoothie = new SmoothieChart();
+            smoothie.streamTo(document.getElementById("mycanvas"));
+            var line1 = new TimeSeries();
+
+            // Add a random value to each line every second
+            setInterval(function() {
+              console.log(arrayValues)
+              line1.append(arrayValues[arrayValues.length -1]);
+            }, 500);
+
+            // Add to SmoothieChart
+            smoothie.addTimeSeries(line1);
+
+            smoothie.streamTo(document.getElementById("mycanvas"), 1000 /*delay*/);
+
+          </script>
+
+  	    		<div class="row">
+
+  	    		</div>
+  	    		<div class="row">
+  	    			<div class="desc_arduino col s6">
+                <img src="assets/images/arduino_uno.jpg" style="width: 70%; height: auto;">
+                <p>Arduino UNO</p>
+                <p>The UNO is the best board to get started with electronics and coding. If this is your first experience tinkering with the platform, the UNO is the most robust board you can start playing with. The UNO is the most used and documented board of the whole Arduino family.</p>
+                <a href="https://store.arduino.cc/usa/arduino-uno-rev3">More info</a>
+  	    			</div>
+  	    			<div class="desc_muse-headgear col s6">
+                <img src="assets/images/muse-headgear.png" style="width: 70%; height: auto;">
+                <p>Muse Headgear</p>
+                <p>Muse: the brain sensing headband, is an electroencephalography (EEG) technology. EEG is a cell-established, non-invasive, harmless method of recording the electrical activity of groups of brain  cells. EEG provides robust real-time insight into the brain; and Muse is the most versatile and easy-to-use EEG system available.</p>
+                <a href="">More info</a>
+  	    			</div>
+  	    		</div>
 
 	    		<div class="row">
 
