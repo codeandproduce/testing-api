@@ -25,12 +25,15 @@ $('.start').click(function(){
   var bruh = true;
 
   socket.on('challen', function(doc){
-    // console.log(doc.text);
     if(doc.text < 1000 && bruh == true && doc.text>600){
       console.log('eyes are open');
+      console.log(doc.text);
+
       bruh = false;
     }else if(doc.text>1000 && bruh == false && doc.text<1050){
       console.log('eyesare closed');
+      console.log(doc.text);
+
       bruh = true;
     }
 
