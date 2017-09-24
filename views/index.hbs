@@ -31,9 +31,9 @@ $(document).scroll(function(){
 
   socket.on('challen', function(doc){
     if(arrayValues.length < 150){
-      arrayValues.append(doc.text);
+      arrayValues.push(doc.text);
     }else{
-      arrayValues.append(doc.text);
+      arrayValues.push(doc.text);
       const index = arrayValues.length;
       arrayValues.splice(index, 1);
     }
