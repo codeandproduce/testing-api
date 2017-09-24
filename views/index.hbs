@@ -38,7 +38,7 @@
   	<body>
       <script>
       $(document).ready(function(){
-        $.fn.fullpage.moveSectionDown();
+        // $.fn.fullpage.moveSectionDown();
         $.fn.fullpage.setAllowScrolling(true);
 
         // setTimeout(function(){
@@ -350,13 +350,11 @@
                   color : "#BDDEFB"
                 }
               ];
-
               $('.fourth-page-charts').remove();
               $('#contain-short-memory').append(`<canvas id="shortTermMemory" class="fourth-page-charts" height="200" width="200"></canvas>`);
               $('#contain-short-attention').append(`<canvas id="shortTermAttention" class="fourth-page-charts" height="200" width="200"></canvas>`);
               var myPie = new Chart(document.getElementById("shortTermMemory").getContext("2d")).Doughnut(shortTermMemoryPieData,pieOptions);
               var myPie = new Chart(document.getElementById("shortTermAttention").getContext("2d")).Doughnut(shortTermAttentionPieData,pieOptions);
-
           },500);
           </script>
 
@@ -391,7 +389,8 @@
         </div>
 	    	<div id="fifth-page" class="section">Some section</div>
 	    	<div id="sixth-page" class="section">Some section</div>
-        <div id="seventh-page" class="section">About Us
+        <div id="seventh-page" class="section profile-page">
+          <h1 class="profile-heading">About Us</h1>
           <div class="row">
             <div class="card col s3">
               <img src="">
@@ -402,6 +401,15 @@
                 </div>
               </div>
           </div>
+          <style>
+            .profile-page{
+              padding:30px;
+            }
+            .profile-heading{
+              font-size:40px;
+              color:white;
+            }
+          </style>
 
             <div class="card col s3">
               <img src="">
