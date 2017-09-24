@@ -74,14 +74,8 @@ $(document).ready(function() {
 	});
 });
 
-$('.start').click(function(){
-	$.fn.fullpage.moveSectionDown();
-});
-
 
 $(document).ready(function(){
-	$.fn.fullpage.moveSectionDown();
-
-	$.fn.fullpage.setAllowScrolling(true);
+	$.fn.fullpage.setAllowScrolling(false);
 
 });

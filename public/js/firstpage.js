@@ -73,9 +73,19 @@ $('.start').click(function(){
   });
 
   var anxietyValue = 0;
+
+  var shortTermMemoryValue = 0;
+  var shortTermAttentionValue = 0;
+
   socket.on('anxiety to website', function(doc){
     anxietyValue = doc.value;
     console.log(anxietyValue);
+  });
+  socket.on('short term memory to website', function(doc){
+    shortTermMemoryValue = doc.value;
+  });
+  socket.on('short term attention to website', function(doc){
+    shortTermAttentionValue = doc.value;
   });
 
   //
