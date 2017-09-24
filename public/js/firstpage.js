@@ -25,7 +25,7 @@ $('.start').click(function(){
   var bruh = true;
 
   socket.on('challen', function(doc){
-    console.log(doc.text);
+    // console.log(doc.text);
     if(doc.text < 1000 && bruh == true && doc.text>600){
       console.log('eyes are open');
       bruh = false;
