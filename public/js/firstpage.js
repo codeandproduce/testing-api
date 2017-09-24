@@ -26,35 +26,26 @@ $('.start').click(function(){
 
 
   });
-  socket.on('eyes close', function(doc){
-    eyesOpen = false;
-  });
+
+var bruh = false;
   socket.on('challen', function(doc){
-    if(doc.text > 950 && doc.text<1050){
-      if(eyesOpen){
-        console.log('closed');
-        eyesOpen = false;
-        if(isItValidating){
-          // $('body').scrollTop(scrollTopValue+=60);
-          // scrollTopValue+=60;
-        }else{
-          blinkCounter++;
-          if(blinkCounter == 1){
-            displayBlinkDot($('#firstBlinkFlash'));
-          }else if(blinkCounter == 2){
-            displayBlinkDot($('#secondBlinkFlash'));
-          }
-          else if(blinkCounter == 3){
-            displayBlinkDot($('#thirdBlinkFlash'));
-            socket.emit('this is a pair', {
-              museSocketID:doc.id,
-              userSocketID:thisID
-            });
-          }
-        }
+    if(doc.text > 950 && doc.text<1050 && !bruh){
+      console.log('my eyes have been closed');
+      bruh = true;
+    }else if(doc.text < 950 && bruh){
+      blinkCounter++;
+      if(blinkCounter == 1){
+        displayBlinkDot($('#firstBlinkFlash'));
+      }else if(blinkCounter == 2){
+        displayBlinkDot($('#secondBlinkFlash'));
       }
-    }else{
-      eyesOpen = true;
+      else if(blinkCounter == 3){
+        displayBlinkDot($('#thirdBlinkFlash'));
+        socket.emit('this is a pair', {
+          museSocketID:doc.id,
+          userSocketID:thisID
+        });
+      }      bruh = false;
     }
     if(arrayValues.length < 150){
       arrayValues.push(doc.text);
