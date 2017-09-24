@@ -52,7 +52,7 @@ $(document).on('click','#getStarted', function(){
         bruh = false;
         isItValidating=false;
       }else{
-        $.fn.fullpage.moveSectionDown();
+        // $.fn.fullpage.moveSectionDown();
 
         if(didItBlink[0]==1 && didItBlink[1]==1){
           didItBlink = [];
