@@ -28,10 +28,7 @@ $(document).on('click','#getStarted', function(){
   var bruh = true;
   var didItBlink = [];
   socket.on('challen', function(doc){
-    console.log(doc.text);
     if(doc.text < 850 && bruh == true && doc.text>600){
-      console.log("open");
-      console.log(doc.text);
       if(isItValidating == true){
         blinkCounter++;
         if(blinkCounter == 1){
@@ -53,8 +50,9 @@ $(document).on('click','#getStarted', function(){
         }
         bruh = false;
       }else{
+        $.fn.fullpage.moveSectionDown();
+
         if(didItBlink[0]==1 && didItBlink[1]==1){
-          $(window).scrollTop($(window).scrollTop()+30);
           didItBlink = [];
           console.log('blink');
         }
@@ -88,11 +86,11 @@ $(document).on('click','#getStarted', function(){
   socket.on('anxiety to website', function(doc){
     anxietyValue = doc.value;
   });
-  socket.on('short term memory to website', function(doc){
-    shortTermMemoryValue = doc.value;
-  });
   socket.on('short term attention to website', function(doc){
     shortTermAttentionValue = doc.value;
+  });
+  socket.on('short term memory to website', function(doc){
+    shortTermMemoryValue = doc.value;
   });
 
   //

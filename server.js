@@ -60,6 +60,11 @@ io.on('connection', (socket) => {
     });
   });
   socket.on('att_val', (doc)=>{
+    socket.broadcast.emit('short term attention to website', {
+      value: doc
+    });
+  });
+  socket.on('mem_val', (doc)=>{
     socket.broadcast.emit('short term memory to website', {
       value: doc
     });
