@@ -1,74 +1,134 @@
-<style>
-body{
-  font-size:100px;
-}
-</style>
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+	    <meta charset="UTF-8">
+  		<meta name="description" content="AmuseBrains">
+  		<meta name="keywords" content="Muse, Arduino, MuseLab">
+  		<meta name="author" content="Team AmuseBrains">
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io();
-  var arrayValues = [];
-  var scrollTopValue = 0;
-  var thisID = '';
-  $(document).scroll(function(){
-    scrollTopValue = $(this).scrollTop();
-    console.log(scrollTopValue);
-  });
-  socket.on('yourID', function(doc){
-    thisID = doc.thisID
-  });
-  socket.on('new client', function(doc){
-    console.log(doc.text);
-  });
-  var current = 100;
-  var isItValidating = false;
-  var blinkCounter
+	    <title>AmuseBrains</title>
 
-  // socket.on('eyes open', function(doc){
-  //   if(!isItValidating){
-  //     $('body').scrollTop(scrollTopValue+=60);
-  //     scrollTopValue+=60;
-  //   }else{
-  //     blinkCounter++;
-  //     if(blinkdCounter == 3){
-  //       socket.emit('this is a pair', {
-  //         museSocketID:doc.id,
-  //         userSocketID:thisID
-  //       });
-  //     }
-  //   }
+	    <link rel="shortcut_icon" src="">
 
-  // });
-  setTimeout(function(){
-    $('body').scrollTop(scrollTopValue+=100);
-  },2000);
+	    <!-- Compiled and minified CSS -->
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  		<link rel="stylesheet" href="css/jquery.fullPage.css">
+  		<link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/firstpage.css" />
 
-  socket.on('challen', function(doc){
-    if(arrayValues.length < 150){
-      arrayValues.push(doc.text);
-    }else{
-      arrayValues.push(doc.text);
-      arrayValues.shift();
-    }
-    console.log(arrayValues);
-    console.log(arrayValues.length);
-  });
-  socket.on('eyes open', function(doc){
-    console.log('eyes open');
-  });
-</script>
-<body>
-<style>
-  body{
-    position:absolute;
-    transition:all 250ms ease-in-out;
-  }
-  .movedown{
-    top:0;
-    transition: all 250ms ease-in-out;
-    margin-bottom:100px;
-  }
-</style>
 
-</body>
+  		<!-- Compiled and minified JavaScript -->
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+
+	    <script src="js/jquery.fullpage.min.js"></script>
+	    <script type="text/javascript" src="js/script.js"></script>
+      <script type="text/javascript" src="js/firstpage.js"></script>
+
+	</head>
+  	<body>
+	    <div id="fullpage">
+	    	<div id="first-page" class="section">
+		        <div class="contain-content">
+		          <!-- introduction -->
+		          <h1 class="first-heading">Welcome to <br> AmuseBrains</h1>
+		          <button class="start">Get Started</button>
+              <p class="little-des">
+                AmuseBrains is an app that utlizes Amuse. </br>
+                Confirm your connection by blinking three times.
+              </p>
+		          <!-- login icons -->
+
+		          <!-- Toast -->
+              <div class="contain-dots">
+                <div class="contain-dots-them">
+                  <ul class="ul-dots">
+                    <div class="contain-inside-dots">
+                      <li class="a-dot">
+                          <span id="firstBlinkFlash"></span>
+                      </li>
+                    </div>
+                    <div class="contain-inside-dots">
+                      <li class="a-dot">
+                          <span id="secondBlinkFlash"></span>
+                      </li>
+                    </div>
+                    <div class="contain-inside-dots">
+                      <li class="a-dot">
+                          <span id="thirdBlinkFlash"></span>
+                      </li>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+		        </div>
+	      	</div>
+	    	<div id="second-page" class="section">
+	    		<div class="contain-usage">
+	    			<h1 class="second-page-heading">How to use AmuseBrains:</h1>
+	    			<h2 class="second-page-second-heading">It's very simple to use our service.
+              <br/>
+
+               You need a few hardwares to make this thing run.</h2>
+	    			<div class="row csenter">
+				         <div class="col s4 m4">
+          					<div class="card orange hoverable">
+            					<div class="card-image">
+              						<img src="assets/images/arduino.png">
+            					</div>
+            					<div class="card-content">
+              						<p><strong>Arduino</strong></p>
+            					</div>
+            				</div>
+          				</div>
+	    				<div class="col s4 m4">
+          					<div class="card hoverable">
+            					<div class="card-image">
+              						<img src="assets/images/muse.png">
+            					</div>
+            					<div class="card-content">
+              						<p><strong>Muse</strong></p>
+            					</div>
+          					</div>
+        				</div>
+				        <div class="col s4 m4">
+          					<div class="card hoverable blue">
+            					<div class="card-image">
+              						<img src="assets/images/muselab.png">
+            					</div>
+            					<div class="card-content">
+              						<p><strong>MuseLab SDK</strong></p>
+            					</div>
+          					</div>
+        				</div>
+	    			</div>
+
+	    			<p>Here we go you have checked all our hardware requirements that you need to connect with the service</p>
+	    		</div>
+	    	</div>
+	    	<div id="third-page" class="section">
+
+	    		<div class="row">
+
+	    		</div>
+	    		<div class="row">
+	    			<div class="">
+
+	    			</div>
+	    			<div class="">
+
+	    			</div>
+	    		</div>
+	    	</div>
+	    	<div id="fourth-page" class="section">Some section</div>
+	    	<div id="fifth-page" class="section">Some section</div>
+	    	<div id="sixth-page" class="section">Some section</div>
+	    	<div id="seventh-page" class="section">Some section</div>
+	    	<div id="eigth-page" class="section">Some section</div>
+	    </div>
+  	</body>
+</html>
