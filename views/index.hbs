@@ -190,31 +190,32 @@
                   }
                 </style>
                 <canvas id="myChart" height="200" width="200"></canvas>
+
                 <p>
                   anxietyValue
                 </p>
                 <script>
 
-                      var pieData = [
-                        {
-                          value: anxietyValue*100,
-                          color:"#EF9898"
-                        },
-                        {
-                          value : 100-(anxietyValue*100),
-                          color : "#BDDEFB"
-                        }
-                      ];
+                  pieData = [
+                    {
+                      value: parseInt(anxietyValue*100)
+                      color:"#EF9898"
+                    },
+                    {
+                      value : parseInt(100-(anxietyValue*100)),
+                      color : "#BDDEFB"
+                    }
+                  ];
 
                     var myPie = new Chart(document.getElementById("myChart").getContext("2d")).Doughnut(pieData,{percentageInnerCutout : 80});
                     setInterval(function(){
                       pieData = [
                         {
-                          value: anxietyValue*100,
+                          value: parseInt(anxietyValue*100)
                           color:"#EF9898"
                         },
                         {
-                          value : 100-(anxietyValue*100),
+                          value : parseInt(100-(anxietyValue*100)),
                           color : "#BDDEFB"
                         }
                       ];
