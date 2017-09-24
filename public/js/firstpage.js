@@ -49,6 +49,7 @@ $(document).on('click','#getStarted', function(){
           },1000);
         }
         bruh = false;
+        isItValidating=false;
       }else{
         $.fn.fullpage.moveSectionDown();
 
