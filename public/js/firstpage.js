@@ -27,27 +27,16 @@ $('.start').click(function(){
 
   });
 
-var bruh = false;
+var bruh = true;
   socket.on('challen', function(doc){
-    if(doc.text > 950 && doc.text<1050 && !bruh){
-      console.log('my eyes have been closed');
+   if(doc.text < 950 && !bruh){
+      console.log('eyes are open');
       bruh = true;
-    }else if(doc.text < 950 && bruh){
-      console.log('suposed to be one open');
-      blinkCounter++;
-      if(blinkCounter == 1){
-        displayBlinkDot($('#firstBlinkFlash'));
-      }else if(blinkCounter == 2){
-        displayBlinkDot($('#secondBlinkFlash'));
-      }
-      else if(blinkCounter == 3){
-        displayBlinkDot($('#thirdBlinkFlash'));
-        socket.emit('this is a pair', {
-          museSocketID:doc.id,
-          userSocketID:thisID
-        });
-      }      bruh = false;
+    }else if(doc.text>950, bruh){
+      console.log('eyesare closed');
+      bruh = false;
     }
+
     if(arrayValues.length < 150){
       arrayValues.push(doc.text);
     }else{
@@ -58,3 +47,24 @@ var bruh = false;
 
 
   });
+  //
+  //
+  // if(doc.text > 950 && doc.text<1050 && !bruh){
+  //   console.log('my eyes have been closed');
+  //   bruh = true;
+  // }else if(doc.text < 950 && bruh){
+  //   console.log('suposed to be one open');
+  //   blinkCounter++;
+  //   if(blinkCounter == 1){
+  //     displayBlinkDot($('#firstBlinkFlash'));
+  //   }else if(blinkCounter == 2){
+  //     displayBlinkDot($('#secondBlinkFlash'));
+  //   }
+  //   else if(blinkCounter == 3){
+  //     displayBlinkDot($('#thirdBlinkFlash'));
+  //     socket.emit('this is a pair', {
+  //       museSocketID:doc.id,
+  //       userSocketID:thisID
+  //     });
+  //   }      bruh = false;
+  // }
