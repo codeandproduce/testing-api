@@ -31,7 +31,28 @@ $('.start').click(function(){
   });
   socket.on('challen', function(doc){
     if(doc.text > 1000){
-      eyesOpen = false;
+      if(eyesOpen){
+        console.log('closed');
+        eyesOpen = false;
+        if(!isItValidating){
+          $('body').scrollTop(scrollTopValue+=60);
+          scrollTopValue+=60;
+        }else{
+          blinkCounter++;
+          if(blinkCounter == 1){
+            displayBlinkDot($('#firstBlinkFlash'));
+          }else if(blinkCounter == 2){
+            displayBlinkDot($('#secondBlinkFlash'));
+          }
+          else if(blinkCounter == 3){
+            displayBlinkDot($('#thirdBlinkFlash'));
+            socket.emit('this is a pair', {
+              museSocketID:doc.id,
+              userSocketID:thisID
+            });
+          }
+        }
+      }
     }else{
       eyesOpen = true;
     }
@@ -42,27 +63,6 @@ $('.start').click(function(){
       arrayValues.shift();
     }
 
-    if(!eyesOpen){
-      console.log('!eyesopen');
-      eyesOpen = true;
-      if(!isItValidating){
-        $('body').scrollTop(scrollTopValue+=60);
-        scrollTopValue+=60;
-      }else{
-        blinkCounter++;
-        if(blinkCounter == 1){
-          displayBlinkDot($('#firstBlinkFlash'));
-        }else if(blinkCounter == 2){
-          displayBlinkDot($('#secondBlinkFlash'));
-        }
-        else if(blinkCounter == 3){
-          displayBlinkDot($('#thirdBlinkFlash'));
-          socket.emit('this is a pair', {
-            museSocketID:doc.id,
-            userSocketID:thisID
-          });
-        }
-      }
-    }
+
 
   });
