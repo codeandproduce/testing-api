@@ -59,7 +59,7 @@ io.on('connection', (socket) => {
       value:doc
     });
   });
-  socket.on('awt_val', (doc)=>{
+  socket.on('att_val', (doc)=>{
     socket.broadcast.emit('short term memory to website', {
       value: doc
     });
